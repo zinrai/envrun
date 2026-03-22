@@ -1,0 +1,22 @@
+profiles:
+  tfenv:
+    vars: |
+      TFENV_ROOT="$HOME/.tfenv"
+      PATH="$TFENV_ROOT/bin:$PATH"
+
+  nodenv:
+    vars: |
+      NODENV_ROOT="$HOME/.nodenv"
+      PATH="$NODENV_ROOT/bin:$PATH"
+
+  proxy:
+    vars: |
+      HTTP_PROXY="http://proxy.example.com:8080"
+      HTTPS_PROXY="http://proxy.example.com:8080"
+
+  docker:
+    vars: |
+      DOCKER_HOST="tcp://localhost:2375"
+
+  myapp:
+    file: ".env.production"
