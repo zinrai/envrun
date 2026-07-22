@@ -10,6 +10,7 @@ import (
 func main() {
 	configPath := flag.String("config", "envrun.yaml", "Path to YAML configuration file")
 	profileName := flag.String("profile", "", "Profile name to use")
+	showVersion := flag.Bool("version", false, "Print version information and exit")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage:\n")
 		fmt.Fprintf(os.Stderr, "  envrun -profile <name> [-config <path>] -- <command> [args...]\n")
@@ -18,6 +19,11 @@ func main() {
 		flag.PrintDefaults()
 	}
 	flag.Parse()
+
+	if *showVersion {
+		printVersion()
+		os.Exit(0)
+	}
 
 	cmdArgs := flag.Args()
 	envrunFile := os.Getenv("ENVRUN_FILE")
